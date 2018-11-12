@@ -36,16 +36,38 @@ A precision refrigerator was built and controlled using a raspberry pi to precis
 \end{abstract}
 
 \section*{Introduction}
-Micro controllers can be used for a wide range of different applications. These applications in inbedded systems and can range from driving robots\cite{robomicro} to burglar detection \cite{microburg}. A micro controller refers to a small computer that is usually based on a single integrated circuit. This single circuit often contains a CPU, some form of memory and usually some form of input/output (I/O) peripherals. In recent times micro controllers and in turn micro processors have became significantly more powerful and can control much more complex systems as a result of this. 
+Micro controllers can be used for a wide range of different applications. These applications in embedded systems and can range from driving robots\cite{robomicro} to burglar detection \cite{microburg}. A micro controller refers to a small computer that is usually based on a single integrated circuit. This single circuit often contains a CPU, some form of memory and usually some form of input/output (I/O) peripherals. In recent times micro controllers and in turn micro processors have became significantly more powerful and can control much more complex systems as a result of this.\\
+
+One application of a micro controller is in the function of a precision refrigerator. Here a micro controller can use various inputs to control the temperature of various objects. Knowing and being able to control the temperature of objects with a high level of precision is vary important in different fields. For example during experiments looking at reactions at phase boundaries\cite{microfluidic} being able to precisely control the temperature to keep the substance at a desired level is very important to obtain reliable results.\\
+
+To precisely control the temperature of a substance it is useful to understand where and how much energy is required to heat and cool it. The energy required to change the temperature of a substance is determined by the heat capacity. The heat capacity ($C$) of a substance is defined as the ratio of heat transferred ($Q$) to or from the system and the resulting change in temperature ($T$) of the substance.  
+
+\begin{equation}\label{eq:heat_cap}
+    C(T) = \frac{\delta Q}{dt}
+\end{equation}
+
+The heat capacity changes depending on the substance that is being heated. On top of this the heat capacity also varies with temperature and what variables are free to change and which are constrained i.e. constant pressure temperature changes vs constant volume temperature changes. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=1.0]{Heat_capacity_C.jpg}
+    \caption{\it{The heat capacity of water varying differently when kept at constant pressure compared to being kept at constant volume\cite{heat_cap}.}}
+    \label{fig:heat_cap_water}
+\end{figure}
+
+This variation can be seen in Figure \ref{fig:heat_cap_water} where the heat capacity of water varies differently depending on which state variable is kept constant (either pressure of volume). \footnote{At temperatures close to $0^oC$ the difference in heat capacities Cp and Cv are approximatly equal and only noticably start to diverge from one another at temperatures close to $50^oC$.}
+
+
+
+
 
 % RPI Not a micro processor or micro controller but system on chip
-Recently micro controllers have been taking over electronic systems and have allowed for processes 
 
 
 \section*{Aims}
 
 \section*{Method}
-
+% using the heat capacity of water at room tmp
 \section*{Results and Discussion}
 
 \subsection*{Discussion}
