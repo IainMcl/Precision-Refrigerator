@@ -1,0 +1,95 @@
+ \documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[font={small,it}]{caption}
+%\usepackage[font={it}]{caption}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\lfoot{Iain Mclaughlan}
+%\rfoot{s1524154}
+
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\title{Precision Refrigerator}
+\author{Iain McLaughlan\\ s1524154 }
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+A precision refrigerator was built and controlled using a raspberry pi to precisely control the temperature of wine (water) by toggling the on/off state of a Peltier cooling unit. The efficiency of this cooling unit was then tested by comparing the energy consumed to change the temperature of the water with the specific heat capacity of water. The fridge was found to have a percentage efficiency of ............ \%. Following this different methods for determining the on/off state of the Peltier were used. These converge on an aim temperature with different rates and efficiency's. A scoring system was devised to compare different convergence methods and the advantages and disadvantages of each were compared.
+\end{abstract}
+
+\section*{Introduction}
+Micro controllers can be used for a wide range of different applications. These applications in inbedded systems and can range from driving robots\cite{robomicro} to burglar detection \cite{microburg}. A micro controller refers to a small computer that is usually based on a single integrated circuit. This single circuit often contains a CPU, some form of memory and usually some form of input/output (I/O) peripherals. In recent times micro controllers and in turn micro processors have became significantly more powerful and can control much more complex systems as a result of this. 
+
+% RPI Not a micro processor or micro controller but system on chip
+Recently micro controllers have been taking over electronic systems and have allowed for processes 
+
+
+\section*{Aims}
+
+\section*{Method}
+
+\section*{Results and Discussion}
+
+\subsection*{Discussion}
+
+\section*{Areas of Further Research}
+
+
+\section*{Conclusion}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+
+
+\newpage
+\appendix
+
+
+\newpage
+\section{Python Data Analysis Code}\label{ap:code}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+ 
+% \begin{document}
+% \lstinputlisting[language=python]{}
+% \end{document}
+
+\end{document}
