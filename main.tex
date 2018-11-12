@@ -32,7 +32,7 @@
 
 \maketitle
 \begin{abstract}
-A precision refrigerator was built and controlled using a raspberry pi to precisely control the temperature of wine (water) by toggling the on/off state of a Peltier cooling unit. The efficiency of this cooling unit was then tested by comparing the energy consumed to change the temperature of the water with the specific heat capacity of water. The fridge was found to have a percentage efficiency of ............ \%. Following this different methods for determining the on/off state of the Peltier were used. These converge on an aim temperature with different rates and efficiency's. A scoring system was devised to compare different convergence methods and the advantages and disadvantages of each were compared.
+A precision refrigerator was built and controlled using a raspberry pi to precisely control the temperature of wine (water) by toggling the on/off state of a Peltier\cite{peltier} cooling unit. The efficiency of this cooling unit was then tested by comparing the energy consumed to change the temperature of the water with the specific heat capacity of water. The fridge was found to have a percentage efficiency of ............ \%. Following this different methods for determining the on/off state of the Peltier were used. These converge on an aim temperature with different rates and efficiency's. A scoring system was devised to compare different convergence methods and the advantages and disadvantages of each were compared.
 \end{abstract}
 
 \section*{Introduction}
@@ -46,11 +46,11 @@ To precisely control the temperature of a substance it is useful to understand w
     C(T) = \frac{\delta Q}{dt}
 \end{equation}
 
-The heat capacity changes depending on the substance that is being heated. On top of this the heat capacity also varies with temperature and what variables are free to change and which are constrained i.e. constant pressure temperature changes vs constant volume temperature changes. 
+The heat capacity changes depending on the substance that is being heated. On top of this the heat capacity also varies with temperature and what variables are free to change and which are constrained i.e. constant pressure temperature changes vs constant volume temperature changes.\\
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=1.0]{Heat_capacity_C.jpg}
+    \includegraphics[scale=.75]{Heat_capacity_C.jpg}
     \caption{\it{The heat capacity of water varying differently when kept at constant pressure compared to being kept at constant volume\cite{heat_cap}.}}
     \label{fig:heat_cap_water}
 \end{figure}
@@ -83,11 +83,12 @@ This is an idealised case describing the maximum efficiency, in reality it is im
 
 \section*{Aims}
 \begin{itemize}
-    \item Build a circuit that measures the temperature of a substance and can control the on/off state of a Peltier heat pump\cite{peltier}. 
-    \item Measure the cooling efficiency of the cooling circuit when cooling a known volume of water.
-    \item Construct several convergence methods which determine the on/off state of the peltier depending on given inputs and compare their abilities at precisely controlling the temperature of the water.
+    \item Build a circuit that measures the temperature of a substance and can control the on/off state of a Peltier heat pump\cite{peltier} to control the cooling of the substance. 
+    \item Measure the cooling efficiency of the cooling circuit when cooling a known volume of water by a known amount.
+    \item Construct several convergence methods which determine the on/off state of the Peltier depending on given inputs and compare their abilities at precisely controlling the temperature of the water.
 \end{itemize}
 \section*{Method}
+To control the Peltier heat pump cooling chip a breadboard circuit was built using a Raspberry Pi\cite{rpi} as a system on a chip micro controller. The circuit was initially set up with a Programmable Resolution 1-Wire Digital Thermometer (DS18B20) thermometer\cite{thermometer}. This thermometer has a programmable precision of 9 to 12 bits. In 12 bit mode this gives the thermometer a highest precision where it is able to read at $2^{-4}^oC(0.0625^oC)$. This was tested with a short python script which reads the temperature of the thermometer every 2 seconds\ref{app:therm_test}
 % using the heat capacity of water at room tmp
 \section*{Results and Discussion}
 
