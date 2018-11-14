@@ -92,7 +92,7 @@ The Peltier heat pump cooling chip was controlled using a breadboard circuit was
 
 \subsection*{Thermometer Calibration}
 
-The circuit was initially set up with a Programmable Resolution 1-Wire Digital Thermometer (DS18B20) thermometer\cite{thermometer}. This thermometer has a programmable precision of 9 to 12 bits. In 12 bit mode this gives the thermometer a highest precision where it is able to read at $2^{-4o} C (0.0625^o C)$. This was tested with a short python script which reads the temperature of the thermometer every 2 seconds\ref{app:therm_test}. A second thermometer was connected in parallel with the first and was tested in the same way. Over a period of 60 seconds with the thermometer probes measuring the room air temperature near to one another, the temperature from both thermometers were recorded. The temperatures were found to be consistent with one another with only small fluctuations which averaged out at the same value for both instruments. Since both probes measured the same temperature there was no systematic offset needed to be built in to further measurements. If a systematic error was found then an average of the two probes would have been found and the difference between the mean of one probe and the mean of both would be added to all further readings.\\
+The circuit was initially set up with a Programmable Resolution 1-Wire Digital Thermometer (DS18B20) thermometer\cite{thermometer}. This thermometer has a programmable precision of 9 to 12 bits and had an accuracy of $\pm 0.5^oC$. In 12 bit mode this gives the thermometer a highest precision where it is able to read at $2^{-4o} C (0.0625^o C)$. This was tested with a short python script which reads the temperature of the thermometer every 2 seconds\ref{app:therm_test}. A second thermometer was connected in parallel with the first and was tested in the same way. Over a period of 60 seconds with the thermometer probes measuring the room air temperature near to one another, the temperature from both thermometers were recorded. The temperatures were found to be consistent with one another with only small fluctuations which averaged out at the same value for both instruments. Since both probes measured the same temperature there was no systematic offset needed to be built in to further measurements. If a systematic error was found then an average of the two probes would have been found and the difference between the mean of one probe and the mean of both would be added to all further readings.\\
 
 \subsection*{Peltier Setup}
 The Peltier was connected to a ********* power supply. This was in turn connected to a ******* transistor which acted as a switch and could be controlled by a Raspberry Pi by toggling the state of one of its GPIO (general purpose input output) pins between a high and a low voltage. When the input voltage to the transistor was high the transistor switched on which completed the Peltier circuit activating the cooling chip using the ******* power supply. When the voltage was low the transistor switched off which disconnected the Peltier circuit and stopped the cooling chip from receiving power.\\
@@ -109,7 +109,7 @@ Several methods were made which determined the state of the cooling chip which a
 
 These methods worked using the following rules:\\ % converge(), hysteretic_conv(), rate_limit_conv(), pre_empt_conv()
 
-1 (Converge). If the temperature of the water was above the aim temperature plus the precision then the chip was switched on. If the temperature of the water was below the aim temperature minus the precision then the chip was turned off.\\
+1 (Converge). If the temperature of the water was above the aim temperature plus the precision then the chip was switched on. Alternatively if the temperature of the water was below the aim temperature minus the precision then the chip was turned off.\\
 
 2 (Hysteretic$\_$conv). This method works by realising that since the ambient temperature is taken to be greater than the cooled temperature then the heating of the water will happen faster than the cooling process. To combat this the cooling chip was activated when the temperature was below the aim temperature minus half of the precision. This reduces the relative heating phase.\\
 
@@ -132,6 +132,7 @@ In addition to this the efficiency of the cooling system was measured. This meas
 Therm calibration could be improved by measuring consistency over a range of temperatures.
 Heat dispersion throughout the water.
 Heating issues with heat sinks n that
+score always starts on a down. therefore likley to be higher that actual.
 \section*{Areas of Further Research}
 
 
