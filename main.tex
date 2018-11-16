@@ -95,14 +95,21 @@ The Peltier heat pump cooling chip was controlled using a breadboard circuit was
 The circuit was initially set up with a Programmable Resolution 1-Wire Digital Thermometer (DS18B20) thermometer\cite{thermometer}. This thermometer has a programmable precision of 9 to 12 bits and had an accuracy of $\pm 0.5^oC$. In 12 bit mode this gives the thermometer a highest precision where it is able to read at $2^{-4o} C (0.0625^o C)$. This was tested with a short python script which reads the temperature of the thermometer every 2 seconds\ref{app:therm_test}. A second thermometer was connected in parallel with the first and was tested in the same way. Over a period of 60 seconds with the thermometer probes measuring the room air temperature near to one another, the temperature from both thermometers were recorded. The temperatures were found to be consistent with one another with only small fluctuations which averaged out at the same value for both instruments. Since both probes measured the same temperature there was no systematic offset needed to be built in to further measurements. If a systematic error was found then an average of the two probes would have been found and the difference between the mean of one probe and the mean of both would be added to all further readings.\\
 
 \subsection*{Peltier Setup}
-The Peltier was connected to a ********* power supply. This was in turn connected to a ******* transistor which acted as a switch and could be controlled by a Raspberry Pi by toggling the state of one of its GPIO (general purpose input output) pins between a high and a low voltage. When the input voltage to the transistor was high the transistor switched on which completed the Peltier circuit activating the cooling chip using the ******* power supply. When the voltage was low the transistor switched off which disconnected the Peltier circuit and stopped the cooling chip from receiving power.\\
+The Peltier was connected to a GwInstek GPS-x3303 power supply\cite{powe_sup}. This was in turn connected to a Darlington T0220 Transistor\cite{trans} which acted as a switch and could be controlled by a Raspberry Pi by toggling the state of one of its GPIO (general purpose input output) pins between a high and a low voltage. When the input voltage to the transistor was high the transistor switched on which completed the Peltier circuit activating the cooling chip using the power supply. When the voltage was low the transistor switched off which disconnected the Peltier circuit and stopped the cooling chip from receiving power.\\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{circuit.png}
+    \caption{\it{Circuit diagram showing the Peltier chip being powered by a DC power supply and controlled by a transistor switch whos state is determined by a RPi\cite{course_notes}.}}
+    \label{fig:circuit}
+\end{figure}
 
 The cooling chip circuit was tested by toggling on and off the transistor with the power supply set to a low voltage and current. The chip was held to check that one side heated as the other side cooled when powered. This was only done in short bursts as leaving the chip running for long periods of time when not connected to a heat sink can damaged the chip. \\
 
-Once the Peltier and thermometer were working and tested the Peltier chip was placed on a heat sink. On top of this was placed a small beaker filler with $50ml$ of water and the thermometer probe was placed in the water to measure the temperature of the water. A second thermometer was set up to read the ambient room temperature near the water beaker.
+Once the Peltier and thermometer were working and tested the Peltier chip was placed on a heat sink. On top of this was placed a small beaker filler with $50ml$ of water and the thermometer probe was placed in the water to measure the temperature of the water. A second thermometer was set up to read the ambient room temperature near the water beaker. To help gain an understanding of how the water heats and cools a prolonged cooling phase ($\sim15$ minutes) was recorded and plotted to see the trends. Following this the water was then left to heat for the same time and was again plotter to see the trends.
 
 
-**** Set up diagram? ****
+ % **** Set up diagram? ****
 
 \subsection*{Controlling the Cooling Chip}
 Several methods were made which determined the state of the cooling chip which aimed to converge the temperature of the water down to a target temperature. In all methods a precision range was set which corresponded to the precision with which the thermometer could measure (in some cases this was increased to see different responses). This was done to allow for inaccuracies in the temperature readings; prevent the cooling chip from rapidly switching on and off which could damage it; and provide an acceptable range around the aim temperature which would be counted as the same as the aim temperature (aim temperature $\pm$ precision = aim temperature).\\
@@ -127,12 +134,34 @@ In addition to this the efficiency of the cooling system was measured. This meas
 
 % using the heat capacity of water at room tmp
 \section*{Results and Discussion}
+\subsection*{Thermometer Calibration}
+%Thermometer calibration graph.
+\subsection*{Cooling and Heating Data}
+The heating and cooling data was recorded over 2000 data points which can be seen in Figure: \ref{fig:heat_and_cool_curve}. These show a n exponential decay when cooling and and exponential increase when heating. Throughout the recording process the ambient lab temperature steadily increased from $22.62^oC$ to $24.27^oC$ due to the presence of others working in the same room. Note, the water temperature is consistently slightly below room temperature even after being left for a long period of time.\\
+
+\begin{figure}[h!]
+    \centering
+    \subfloat{{\includegraphics[width=8.45cm]{Cooling_data_curve_long.png} }}%
+    \qquad
+    \subfloat{{\includegraphics[width=8.45cm]{Heating_data_curve_long.png} }}%
+    \caption{\it{Cooling and heating curves consisting of 2000 data points each. Each data point corresponds to $\sim 1$ second ($0.89$ seconds). }}%
+    \label{fig:heat_and_cool_curve}%
+\end{figure}
+
+Cooling and Heatind data recorded over 1000 data points rather than 2000 can be seen in Appendix \ref{app:short_data}.\\
+
+From the cooling data it can be seen that the Peltier heat pump chip can only cool the water by around $1.8^oC$. This provides slight limitations later as operating at lower temperatures could give the possibility of working with a heating curve that is approximately linear over the working range. This could allow predictions to be made more readily of how quickly the water will heat. The same can not be done in reverse i.e. having a higher operating temperature to have an approximately linear cooling line due to the limitations of relying on the room temperature to act as a heater. When working close to the room temperature the relative heating is very slow and non reliable. Having either a larger/more powerful cooling chip could allow to work at lower temperatures and make these approximations possible. 
+
+\subsection*{Convergence Methods}
+\subsection*{Cooler System Efficiency}
+
 
 \subsection*{Discussion}
 Therm calibration could be improved by measuring consistency over a range of temperatures.
 Heat dispersion throughout the water.
 Heating issues with heat sinks n that
-score always starts on a down. therefore likley to be higher that actual.
+score always starts on a down. therefore likely to be higher that actual.
+
 \section*{Areas of Further Research}
 
 
@@ -145,7 +174,15 @@ score always starts on a down. therefore likley to be higher that actual.
 
 \newpage
 \appendix
-
+\section{Cooling and Heating Reference Curves} \label{app:short_data}
+\begin{figure}[h!]
+    \centering
+    \subfloat{{\includegraphics[width=8.45cm]{Cooling_data_curve_short.png} }}%
+    \qquad
+    \subfloat{{\includegraphics[width=8.45cm]{Heating_data_curve_short.png} }}%
+    \caption{\it{Cooling and heating curves consisting of 1000 data points each. Each data point corresponds to $\sim 1$ second ($0.89$ seconds). }}%
+    \label{fig:heat_and_cool_curve}%
+\end{figure}
 
 \newpage
 \section{Python Data Analysis Code}\label{ap:code}
