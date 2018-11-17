@@ -67,12 +67,12 @@ Now knowing the energy required to change the temperature of the substance, bein
 \end{figure}
 
 Refrigerators operate by supplying work to move heat from a cold source to a hot source. The flow of heat for this process can be seen in Figure \ref{fig:fridge}. The efficiency ($\eta$) of the refrigeration process is given by;
-\begin{equation}
+\begin{equation}\label{eq:eff}
     \eta = \frac{Q_C}{Q_H-Q_C}=\frac{Q_C}{Q_H/Q_C - 1}
 \end{equation}
 
 In the ideal circumstance where all of the work available is used to move heat is given by the Carnot efficiency\cite{carnot}. In this idealised case the efficiency is purely determined by the temperature ($T$) of the heat reservoirs.
-\begin{equation}
+\begin{equation}\label{eq:carn_eff}
         \eta_c = \frac{T_C}{T_H-T_C}=\frac{T_C}{T_H/T_C - 1}
 \end{equation}
 This is an idealised case describing the maximum efficiency, in reality it is impossible to reach this efficiency. 
@@ -134,6 +134,8 @@ In addition to this the efficiency of the cooling system was measured. This meas
 
 % using the heat capacity of water at room tmp
 \section*{Results and Discussion}
+An important thing to note throughout this results section is that the precision of the thermometer in its most precise setting is $0.0625^oC$. This precision is the reason behind the stop like nature in the raw data. Attempts were made to smooth the data which can be seen in Appendix \ref{app:smoothed} however this was felt to potentially over or under exaggerate changes in an aim to display smoother data. Instead of smoothing data the decision was made to run experiments over longer periods of time which will show trends over the step like nature of the temperature readings. \\
+
 \subsection*{Thermometer Calibration}
 %Thermometer calibration graph.
 \subsection*{Cooling and Heating Data}
@@ -148,9 +150,11 @@ The heating and cooling data was recorded over 2000 data points which can be see
     \label{fig:heat_and_cool_curve}%
 \end{figure}
 
-Cooling and Heatind data recorded over 1000 data points rather than 2000 can be seen in Appendix \ref{app:short_data}.\\
+Cooling and Heating data recorded over 1000 data points rather than 2000 can be seen in Appendix \ref{app:short_data}.\\
 
-From the cooling data it can be seen that the Peltier heat pump chip can only cool the water by around $1.8^oC$. This provides slight limitations later as operating at lower temperatures could give the possibility of working with a heating curve that is approximately linear over the working range. This could allow predictions to be made more readily of how quickly the water will heat. The same can not be done in reverse i.e. having a higher operating temperature to have an approximately linear cooling line due to the limitations of relying on the room temperature to act as a heater. When working close to the room temperature the relative heating is very slow and non reliable. Having either a larger/more powerful cooling chip could allow to work at lower temperatures and make these approximations possible. 
+From the cooling data it can be seen that the Peltier heat pump chip can only cool the water by around $1.8^oC$ from its initial temperature. This provides slight limitations later as operating at lower temperatures could give the possibility of working with a heating curve that is approximately linear over the working range. This could allow predictions to be made more readily of how quickly the water will heat. The same can not be done in reverse i.e. having a higher operating temperature to have an approximately linear cooling line due to the limitations of relying on the room temperature to act as a heater. When working close to the room temperature the relative heating is very slow and non reliable. Having either a larger/more powerful cooling chip could allow to work at lower temperatures and make these approximations possible. \\
+
+A further possible use for this data would be to use the curves to predict how quickly the temperature will change when at a given temperature. This is not possible in this instance due to the room temperature not being constant throughout. Even if the data was corrected to represent degrees below room temperature this would still not work as the efficiency of the cooling chip will change depending on the working temperatures. The Peltier cooling chip's efficiency will be limited due to the principals from equations \ref{eq:eff} and \ref{eq:carn_eff}. To control this the temperature difference between the bottom of the water beaker and the temperature of the top of the heat sink would have to be relatively constant. On top of this the Peltier chip will have its own working efficiency which will limit this method of temperature change predictions.
 
 \subsection*{Convergence Methods}
 \subsection*{Cooler System Efficiency}
