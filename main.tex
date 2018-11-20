@@ -32,15 +32,15 @@
 
 \maketitle
 \begin{abstract}
-A precision refrigerator was built and controlled using a raspberry pi to precisely control the temperature of wine (water) by toggling the on/off state of a Peltier\cite{peltier} cooling unit. The efficiency of this cooling unit was then tested by comparing the energy consumed to change the temperature of the water with the specific heat capacity of water. The fridge was found to have a percentage efficiency of ............ \%. Following this different methods for determining the on/off state of the Peltier were used. These converge on an aim temperature with different rates and efficiencies. A scoring system was devised to compare different convergence methods and the advantages and disadvantages of each were compared.
+A precision refrigerator was built and controlled using a raspberry pi to precisely control the temperature of wine (water) by toggling the on/off state of a Peltier\cite{peltier} cooling unit. The efficiency of this cooling unit was then tested by comparing the energy consumed to change the temperature of the water with the specific heat capacity of water. The fridge was found to have a percentage efficiency of ............ \%. Following this, different methods for determining the on/off state of the Peltier were used. These converged on an aim temperature with different rates and efficiencies. A scoring system was devised to compare different convergence methods and the advantages and disadvantages of each were compared.
 \end{abstract}
 
 \section*{Introduction}
 Microcontrollers can be used for a wide range of different applications. These applications in embedded systems and can range from driving robots\cite{robomicro} to burglar detection \cite{microburg}. A microcontroller refers to a small computer that is usually based on a single integrated circuit. This single circuit often contains a CPU, some form of memory and usually some form of input/output (I/O) peripherals. In recent times microcontrollers and in turn microprocessors have become significantly more powerful and can control much more complex systems as a result of this.\\
 
-One application of a microcontroller is in the function of a precision refrigerator. Here a microcontroller can use various inputs to control the temperature of various objects. Knowing and being able to control the temperature of objects with a high level of precision is very important in different fields. For example, during experiments looking at reactions at phase boundaries\cite{microfluidic} being able to precisely control the temperature to keep the substance at the desired level is very important to obtain reliable results.\\
+One application of a microcontroller is in the functioning of a precision refrigerator. Here a microcontroller can use various inputs to control the temperature of various objects. Knowing and being able to control the temperature of objects with a high level of precision is very important in different fields. For example, during experiments looking at reactions at phase boundaries\cite{microfluidic} being able to precisely control the temperature to keep the substance at the desired level is very important in obtaining reliable results.\\
 
-To precisely control the temperature of a substance it is useful to understand where and how much energy is required to heat and cool it. The energy required to change the temperature of a substance is determined by the heat capacity. The heat capacity ($C$) of a substance is defined as the ratio of heat transferred ($Q$) to or from the system and the resulting change in temperature ($T$) of the substance.  % The heat capacity is measured in $kJ/kg K$.
+To precisely control the temperature of a substance it is useful to understand how much energy is required to heat and cool it. The energy required to change the temperature of a substance is determined by the heat capacity. The heat capacity ($C$) of a substance is defined as the ratio of heat transferred ($Q$) to or from the system and the resulting change in temperature ($T$) of the substance.  % The heat capacity is measured in $kJ/kg K$.
 
 \begin{equation}\label{eq:heat_cap}
     C(T) = \frac{\delta Q}{dt}
@@ -57,25 +57,24 @@ The heat capacity changes depending on the substance that is being heated. On to
 
 This variation can be seen in Figure \ref{fig:heat_cap_water} where the heat capacity of water varies differently depending on which state variable is kept constant (either pressure or volume). \footnote{At temperatures close to $0^oC$ the difference in heat capacities, Cp and Cv are approximately equal and only noticeably start to diverge from one another at temperatures close to $50^oC$.}\\
 
-Now knowing the energy required to change the temperature of the substance, being able to measure the amount of energy being transferred to the substance is important (i.e. the efficiency). The efficiency of something is defined as the ratio of the useful work produced to the total energy expended. In the case of a refrigerator, this is the ratio of the energy supplied to the cooling unit compared to the energy actually used to cool.\\
+Using the energy required to change the temperature of the substance along with the amount of energy used in total can be used to calculate the efficiency of the cooling system. The efficiency of something is defined as the ratio of the useful work produced to the total energy expended. In the case of a refrigerator, this is the ratio of the energy supplied to the cooling unit compared to the energy actually used to cool.\\
 
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=.75]{ref.jpg}
-    \caption{\it{Energy movement through a refrigerator, transferring heat from a cold source, Qc, to a hot source, Qh, by providing work energy, W \cite{fridge}.}}
+    \caption{\it{Energy movement through a refrigerator system, transferring heat (Qc) from a cold source ($T_{cold}$) by providing work evergy (W) to drive the heat (Qh) to the hot sink ($T_{hot})$\cite{fridge}.}}
     \label{fig:fridge}
 \end{figure}
 
-Refrigerators operate by supplying work to move heat from a cold source to a hot source. The flow of heat for this process can be seen in Figure \ref{fig:fridge}. The efficiency ($\eta$) of the refrigeration process is given by;
+Refrigerators operate by supplying work to move heat from a cold source to a hot sink. The flow of heat for this process can be seen in Figure \ref{fig:fridge}. The efficiency ($\eta$) of the refrigeration process is given by;
 \begin{equation}\label{eq:eff}
     \eta = \frac{Q_C}{Q_H-Q_C}=\frac{Q_C}{Q_H/Q_C - 1}
 \end{equation}
-
-In the ideal circumstance where all of the work available is used to move heat is given by the Carnot efficiency\cite{carnot}. In this idealised case, the efficiency is purely determined by the temperature ($T$) of the heat reservoirs.
+The ideal circumstance, where all of the work available is used to move heat, is given by the Carnot efficiency\cite{carnot}. In this idealised case, the efficiency is purely determined by the temperature ($T$) of the heat reservoirs.
 \begin{equation}\label{eq:carn_eff}
         \eta_c = \frac{T_C}{T_H-T_C}=\frac{T_C}{T_H/T_C - 1}
 \end{equation}
-This is an idealised case describing the maximum efficiency, in reality it is impossible to reach this efficiency. 
+This is an idealised case describing the maximum efficiency, in reality it is impossible due to heat loss and friction to reach this efficiency. 
 
 
 % RPI Not a micro processor or micro controller but system on chip
@@ -88,11 +87,11 @@ This is an idealised case describing the maximum efficiency, in reality it is im
     \item Construct several convergence methods which determine the on/off state of the Peltier depending on given inputs and compare their abilities at precisely controlling the temperature of the water.
 \end{itemize}
 \section*{Method}
-The Peltier heat pump cooling chip was controlled using a breadboard circuit was built using a Raspberry Pi\cite{rpi} as a system on a chip microcontroller. The chip was powered using an external power supply which was connected and disconnected using a transistor. A python script was written to control the state of the transistor depending on temperature readings from a thermometer. \\
+The Peltier heat pump cooling chip was controlled using a breadboard circuit built using a Raspberry Pi\cite{rpi} as a system on a chip microcontroller. The chip was powered using an external power supply which was connected and disconnected using a transistor. A python script was written to control the state of the transistor depending on temperature readings from a thermometer. \\
 
 \subsection*{Thermometer Calibration}
 
-The circuit was initially set up with a Programmable Resolution 1-Wire Digital Thermometer (DS18B20) thermometer\cite{thermometer}. This thermometer has a programmable precision of 9 to 12 bits and had an accuracy of $\pm 0.5^oC$. In 12 bit mode, this gives the thermometer a highest precision where it is able to read at $2^{-4o} C (0.0625^o C)$. This was tested with a short python script which reads the temperature of the thermometer every 2 seconds\ref{app:therm_test}. A second thermometer was connected in parallel with the first and was tested in the same way. Over a period of 60 seconds with the thermometer probes measuring the room air temperature near to one another, the temperature from both thermometers was recorded. The temperatures were found to be consistent with one another with only small fluctuations which averaged out at the same value for both instruments. Since both probes measured the same temperature there was no systematic offset needed to be built in to further measurements. If a systematic error was found then an average of the two probes would have been found and the difference between the mean of one probe and the mean of both would be added to all further readings.\\
+The circuit was initially set up with a Programmable Resolution 1-Wire Digital Thermometer (DS18B20)\cite{thermometer}. This thermometer has a programmable precision of 9 to 12 bits and an accuracy of $\pm 0.5^oC$. In 12 bit mode, this gives the thermometer a highest precision where it is able to read at $2^{-4o} C (0.0625^o C)$. This was tested with a short python script which reads the temperature of the thermometer every 2 seconds\ref{app:therm_test}. A second thermometer was connected in parallel with the first and was tested in the same way. Over a period of 60 seconds with the thermometer probes measuring the room air temperature near to one another, the temperature from both thermometers was recorded. The temperatures were found to be consistent with one another with only small fluctuations which averaged out at the same value for both instruments. Since both probes measured the same temperature there was no systematic offset needed to be built in to further measurements. If a systematic error was found then an average of the two probes would have been found and the difference between the mean of one probe and the mean of both would be added to all further readings.\\
 
 \subsection*{Peltier Setup}
 The Peltier was connected to a GwInstek GPS-x3303 power supply\cite{powe_sup}. This was in turn connected to a Darlington T0220 Transistor\cite{trans} which acted as a switch and could be controlled by a Raspberry Pi by toggling the state of one of its GPIO (general purpose input output) pins between a high and a low voltage. When the input voltage to the transistor was high the transistor switched on which completed the Peltier circuit activating the cooling chip using the power supply. When the voltage was low the transistor switched off which disconnected the Peltier circuit and stopped the cooling chip from receiving power.\\
@@ -112,7 +111,7 @@ Once the Peltier and thermometer were working and tested the Peltier chip was pl
  % **** Set up diagram? ****
 
 \subsection*{Controlling the Cooling Chip}
-Several methods were made which determined the state of the cooling chip which aimed to converge the temperature of the water down to a target temperature. In all methods, a precision range was set which corresponded to the precision with which the thermometer could measure (in some cases this was increased to see different responses). This was done to allow for inaccuracies in the temperature readings; prevent the cooling chip from rapidly switching on and off which could damage it, and provide an acceptable range around the air temperature which would be counted as the same as the air temperature (aim temperature $\pm$ precision = aim temperature).\\
+Several methods were used to determined the state of the cooling chip, which aimed to converge the temperature of the water down to a target temperature. In all methods, a precision range was set which corresponded to the precision with which the thermometer could measure (in some cases this was increased to see different responses). This was done to allow for inaccuracies in the temperature readings, prevent the cooling chip from rapidly switching on and off which could damage it, and provide an acceptable range around the air temperature which would be counted as the same as the air temperature (aim temperature $\pm$ precision = aim temperature).\\
 
 These methods worked using the following rules:\\ % converge(), hysteretic_conv(), rate_limit_conv(), pre_empt_conv()
 
@@ -124,9 +123,9 @@ These methods worked using the following rules:\\ % converge(), hysteretic_conv(
 
 4 (Pre$\_$empt$\_$conv). Here the rate of temperature change is used to try and pre-empt the point at which the temperature will become greater than or less than the aim temperature and toggle the state of the cooling chip accordingly. This is done using the idea that the temperature of the water will continue to change even after the state of the chip has been changed. For example, when the water is heating, if the rate ($degrees/s$) added to the current temperature will be greater than the aim temperature then the cooling chip will be turned on to start the cooling process before the temperature has fully risen to the aim temperature. This rate can be multiplied by an estimated change factor i.e number of seconds for an effect to be realised, to try and work closer to the aim temperature.\\
 
-To compare the different convergence methods a scoring system was devised which look at temperature measurements over a test period and finds the fraction of these which were within the precision range of the desired temperature. The test range was chosen to only start when the temperature had reached the aim temperature so as to only count the region around an aim temperature and not while cooling. \\
+To compare the different convergence methods a scoring system was devised which looks at temperature measurements over a test period and finds the fraction of these which were within the precision range of the desired temperature. The test range was chosen to only start when the temperature had first reached the aim temperature so as to only count the region around an aim temperature and not while initially cooling from the original temperature to the aim.   \\
 
-In addition to this, the efficiency of the cooling system was measured. This measurement was made during the initial cooling phase before the aim temperature had been reached for the first time. This was done by recording the time ($t$) between when the chip was first turned on and when the aim temperature had been reached. This time was multiplied by the power provided from the power source ($P=IV$) to give a total energy used to cool. This was then compared to the energy required to cool the water by the same temperature difference ($\Delta T$) using the known specific heat capacity ($c$) and mass ($m$) of the water. The ratios of these energies were used to find the efficiency of the overall cooling system:
+In addition to this, the efficiency of the cooling system was measured. This measurement was made during the initial cooling phase before the aim temperature had been reached for the first time. This was done by recording the time ($t$) between when the chip was first turned on and when the aim temperature was reached. This time was multiplied by the power provided from the power source ($P=IV$) to give a total energy used to cool. This was then compared to the energy required to cool the water by the same temperature difference ($\Delta T$) using the known specific heat capacity ($c$) and mass ($m$) of the water. The ratios of these energies was used to find the efficiency of the overall cooling system:
 \begin{equation}
     \eta_{sys} = \frac{EnergyToCoolWater}{TotalEnergySupplied} = \frac{cm\Delta T}{Pt}
 \end{equation}
@@ -134,12 +133,12 @@ In addition to this, the efficiency of the cooling system was measured. This mea
 
 % using the heat capacity of water at room temp
 \section*{Results and Discussion}
-An important thing to note throughout this results section is that the precision of the thermometer in its most precise setting is $0.0625^oC$. This precision is the reason behind the stop like nature in the raw data. Attempts were made to smooth the data which can be seen in Appendix \ref{app:smoothed} however this was felt to potentially over or under exaggerate changes in an aim to display smoother data. Instead of smoothing data the decision was made to run experiments over long periods of time which will show trends over the step-like nature of the temperature readings. \\
+An important thing to note throughout this results section is that the precision of the thermometer in its most precise setting is $0.0625^oC$. This precision is the reason behind the step like nature in the raw data. Attempts were made to smooth the data which can be seen in Appendix \ref{app:smoothed} however this was felt to potentially over or under exaggerate changes in aiming to display smoother data. Instead of smoothing data the decision was made to run experiments over long periods of time which will show trends over the step-like nature of the temperature readings. \\
 
 \subsection*{Thermometer Calibration}
 %Thermometer calibration graph.
 \subsection*{Cooling and Heating Data}
-The heating and cooling data was recorded over 2000 data points which can be seen in Figure: \ref{fig:heat_and_cool_curve}. These show an exponential decay when cooling and an exponential increase when heating. Throughout the recording process, the ambient lab temperature steadily increased from $22.62^oC$ to $24.27^oC$ due to the presence of others working in the same room. Note, the water temperature is consistently slightly below room temperature even after being left for a long period of time.\\
+The cooling and heating data was recorded over 2000 data points which can be seen in Figure: \ref{fig:heat_and_cool_curve}. These show an exponential decay when cooling and an exponential increase when heating. Throughout the recording process, the ambient lab temperature steadily increased from $22.62^oC$ to $24.27^oC$ due to the presence of others working in the same room. Note, the water temperature is consistently slightly below room temperature even after being left for a long period of time.\\
 
 \begin{figure}[h!]
     \centering
@@ -150,14 +149,37 @@ The heating and cooling data was recorded over 2000 data points which can be see
     \label{fig:heat_and_cool_curve}%
 \end{figure}
 
-Cooling and Heating data recorded over 1000 data points rather than 2000 can be seen in Appendix \ref{app:short_data}.\\
+Cooling and Heating data recorded over 1000 data points rather than 2000 can be seen in Appendix \ref{app:short_data}. Comparing these shows that it takes a significant time for the temperature to reach its limiting point where the graph begins to plateau. Over short periods of time ($\sim 1$ minute) the rate of temperature change is constantly varying.\\
 
-From the cooling data, it can be seen that the Peltier heat pump chip can only cool the water by around $1.8^oC$ from its initial temperature. This provides slight limitations later as operating at lower temperatures could give the possibility of working with a heating curve that is approximately linear over the working range. This could allow predictions to be made more readily of how quickly the water will heat. The same can not be done in reverse i.e. having a higher operating temperature to have an approximately linear cooling line due to the limitations of relying on the room temperature to act as a heater. When working close to the room temperature the relative heating is very slow and not reliable. Having either a larger/more powerful cooling chip could allow to work at lower temperatures and make these approximations possible. \\
+From the cooling data, it can be seen that the Peltier heat pump chip can only cool the water by around $1.8^oC$ from its initial temperature. This provides slight limitations later as operating at lower temperatures could give the possibility of working with a heating curve that is approximately linear over the working range. This could allow predictions to be made more readily of how quickly the water will heat. The same can not be done in reverse i.e. having a higher operating temperature to have an approximately linear cooling line due to the limitations of relying on the room temperature to act as a heater. When working close to the room temperature the relative heating is very slow and not reliable. Having either a larger or more powerful cooling chip could allow work at lower temperatures and make these approximations possible. \\
 
-A further possible use for this data would be to use the curves to predict how quickly the temperature will change when at a given temperature. This is not possible in this instance due to the room temperature not being constant throughout. Even if the data was corrected to represent degrees below room temperature this would still not work as the efficiency of the cooling chip will change depending on the working temperatures. The Peltier cooling chip's efficiency will be limited due to the principals from equations \ref{eq:eff} and \ref{eq:carn_eff}. To control this the temperature difference between the bottom of the water beaker and the temperature of the top of the heat sink would have to be relatively constant. On top of this, the Peltier chip will have its own working efficiency which will limit this method of temperature change predictions.
+A further possible use for this data would be to use the curves to predict how quickly the temperature will change when at a given temperature. This is not possible in this instance due to the room temperature not being constant throughout. Even if the data was corrected to represent degrees below room temperature this would still not work as the efficiency of the cooling chip will change depending on the working temperatures. The Peltier cooling chip's efficiency will be limited due to the principles from equations \ref{eq:eff} and \ref{eq:carn_eff}. To control this the temperature difference between the bottom of the water beaker and the temperature of the top of the heat sink would have to be relatively constant. On top of this, the Peltier chip will have its own working efficiency which will limit this method of temperature change predictions.
 
 \subsection*{Convergence Methods}
 \subsection*{Cooler System Efficiency}
+The efficiency of the cooling system was measured by finding the ratio of the energy required to cool the water by the given temperature change to the energy supplied to the system from the power supply. These results were taken when cooling over different ranges from room temperature. throughout these calculations the heat capacity of water was taken to be constant at a value of $4.186KJkg^{-1}K^{-1}$\cite{heat_cap_val} and the input voltage and current from the power supply was $3.0V$ and $1.5A$ respectively. \\
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Efficiency ($\%$) & Cooling Range from room temperature ($^oC$) \\
+        \hline
+        8.24 & 0.5 \\
+        4.00 & 0.5\\
+        11.81 & 0.5 \\
+        3.08 & 1.0\\
+        3.65 & 1.0\\
+        8.81 & 1.0\\
+        \hline 
+    \end{tabular}
+    \caption{\it{Cooling system percentage efficiencies when cooled to a certain change below room temperature.}}
+    \label{tab:efficiencies}
+\end{table}
+
+Here in table \ref{tab:efficiencies} it can be seen that the mean efficency of the system over all measurements was $6.60\%$ with a random error of $1.45\%$. The temperature drops when compared to room temperature were recorded as it was thought that because the cooling rate slows at lower temperatures which can be seen in Figure \ref{fig:heat_and_cool_curve} the efficency of the cooling unit would decrease when cooled to lower temperatures. This is shown to be correct by the efficiency of the cooling unit being significantly less when cooling over $1^oC$ when compared to cooling by $0.5^oC$. When the water was cooled by $1^oC$ the mean efficency was found to be $5(2)\%$. When cooled by $0.5^oC$ the mean efficency was $8(3)\%$.\\
+
+The efficency of the overall system is very low. This is a result of many factors: A lot of the energy removed when cooling will also be lost to the surroundings. 
 
 
 \subsection*{Discussion}
