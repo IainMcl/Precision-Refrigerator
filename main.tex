@@ -40,13 +40,13 @@
 
 \maketitle
 \begin{abstract}
-A precision refrigerator was built and controlled using a Raspberry Pi to precisely control the temperature of water by toggling the on/off state of a Peltier \cite{peltier}\cite{pelt} cooling unit. Different methods for determining the on/off state of the Peltier heat pump were used to converge the temperature of the water on an aimed temperature with different effectiveness at maintaining the temperature about the aim. A scoring system was devised to compare different convergence methods and the advantages and disadvantages of each were compared. The devised methods are referred to by descriptor names. It was found that for an aim temperature of $21.4^oC$: `Converge' held a mean temperature of $21.4(1)^oC$ with $53.2(2)\%$ of the data falling within one reading error of the aim value ($\pm 0.0625^oC$). The more complex methods `Hysterisis Converge', `Rate Limit Convergence' and `Pre-emptive Convergence' each had means of $21.4(1)^oC$ and percentage scores of $62.6(2)\%$, $68.0(2)\%$ and $73.0(2)\%$ respectivly. The efficiency of this cooling unit was then tested by comparing the energy consumed to change the temperature of the water with the specific heat capacity of water. The fridge was found to have a percentage efficiency of $6(1)\%$ when measured over $0.5$ and $1.0^oC$ temperature drops.
+A precision refrigerator was built and controlled using a Raspberry Pi to precisely control the temperature of water by toggling the on/off state of a Peltier \cite{peltier}\cite{pelt} cooling unit. Different methods for determining the on/off state of the Peltier heat pump were used to converge the temperature of the water on an aimed temperature with different effectiveness. A scoring system was used to compare different convergence methods, and the advantages and disadvantages of each were compared. The devised methods are referred to by descriptor names. It was found that for an aim temperature of $21.4^oC$: `Converge' held a mean temperature of $21.4(1)^oC$ with $53.2(2)\%$ of the data falling within one reading error of the aim value ($\pm 0.0625^oC$). The more complex methods `Hysterisis Converge', `Rate Limit Convergence' and `Pre-emptive Convergence' each had means of $21.4(1)^oC$ and percentage scores of $62.6(2)\%$, $68.0(2)\%$ and $73.0(2)\%$ respectivly. The efficiency of this cooling unit was then tested, by comparing the energy consumed to change the temperature of the water with the specific heat capacity of water. The fridge was found to have a percentage efficiency of $6(1)\%$ when measured over $0.5$ and $1.0^oC$ temperature drops.
 \end{abstract}
 
 \section*{Introduction}
-Microcontrollers can be used for a wide range of different applications. These applications, include embedded systems and can range from driving robots \cite{robomicro} to burglar detection \cite{microburg}. A microcontroller refers to a small computer that is usually based on a single integrated circuit. This single circuit often contains a central processing unit (CPU), some form of memory and usually some form of input/output (I/O) peripherals. In recent times microcontrollers and in turn microprocessors have become significantly more powerful and can control much more complex systems as a result of this.\\
+Microcontrollers can be used for a wide range of different applications. These applications, include embedded systems and can range from driving robots \cite{robomicro} to burglar detection \cite{microburg}. A microcontroller refers to a small computer that is usually based on a single integrated circuit. This single circuit often contains a central processing unit (CPU), some form of memory and usually some form of input/output (I/O) peripherals. In recent times microcontrollers, and in turn microprocessors, have become significantly more powerful and can control much more complex systems as a result.\\
 
-One application of a microcontroller is in the functioning of a precision refrigerator. Here a microcontroller can use various inputs to control the temperature of various objects. Knowing, and being able to control, the temperature of objects with a high level of precision is very important in different fields. For example, during experiments looking at reactions at phase boundaries \cite{microfluidic} being able to precisely control the temperature to keep the substance at the desired level is very important in obtaining reliable results.\\
+One application of a microcontroller is in the fine control of a precision refrigerator. Here a microcontroller can use various inputs to control the temperature of various objects. Knowing, and being able to control, the temperature of objects with a high level of precision is very important in some fields. For example, during experiments looking at reactions at phase boundaries \cite{microfluidic} being able to precisely control the temperature to keep the substance at the desired level is very important in obtaining reliable results.\\
 
 To precisely control the temperature of a substance it is useful to understand how much energy is required to heat and cool it. The energy required to change the temperature of a substance is determined by the heat capacity. The heat capacity ($C$) of a substance is defined as the ratio of heat transferred ($Q$) to or from the system and the resulting change in temperature ($T$) of the substance.  % The heat capacity is measured in $kJ/kg K$.
 
@@ -54,7 +54,7 @@ To precisely control the temperature of a substance it is useful to understand h
     C(T) = \frac{\delta Q}{dt}
 \end{equation}
 
-The heat capacity changes depending on the substance that is being heated. On top of this, the heat capacity also varies with temperature and what variables are free to change and which are constrained i.e. constant pressure temperature changes vs constant volume temperature changes.\\
+The heat capacity changes depending on the substance being heated. On top of this, the heat capacity also varies with temperature, and what variables are free to change and which are constrained i.e. constant pressure temperature changes vs constant volume temperature changes.\\
 
 \begin{figure}[h!]
     \centering
@@ -63,7 +63,7 @@ The heat capacity changes depending on the substance that is being heated. On to
     \label{fig:heat_cap_water}
 \end{figure}
 
-This variation can be seen in Figure \ref{fig:heat_cap_water} where the heat capacity of water varies differently depending on which state variable is kept constant (either pressure or volume). \footnote{At temperatures close to $0^oC$ the values of heat capacity, Cp and Cv are approximately equal and only noticeably start to diverge from one another at temperatures close to $50^oC$.}\\
+This variation can be seen in Figure \ref{fig:heat_cap_water}, where the heat capacity of water varies differently depending on which state variable is kept constant (either pressure or volume). \footnote{At temperatures close to $0^oC$ the values of heat capacity, Cp and Cv are approximately equal and only noticeably start to diverge from one another at temperatures close to $50^oC$.}\\
 
 The energy required to change the temperature of the substance, along with the amount of energy used in total, can be used to calculate the efficiency of the cooling system. Efficiency is defined as the ratio of the useful work produced to the total energy expended. In the case of a refrigerator, this is the ratio of the energy supplied to the cooling unit compared to the energy actually used to cool.\\
 
@@ -82,7 +82,7 @@ The ideal circumstance, where all of the work available is used to move heat, is
 \begin{equation}\label{eq:carn_eff}
         \eta_c = \frac{T_C}{T_H-T_C}=\frac{T_C}{T_H/T_C - 1}
 \end{equation}
-This is an idealised case describing the maximum efficiency; in reality it is impossible, due to heat loss and friction, to reach this efficiency. 
+This is an idealised case describing the maximum efficiency. In reality it is impossible, due to heat loss and friction, to reach this efficiency. 
 
 
 % RPI Not a micro processor or micro controller but system on chip
@@ -90,18 +90,18 @@ This is an idealised case describing the maximum efficiency; in reality it is im
 
 \section*{Aims}
 \begin{itemize}
-    \item Build a circuit that measures the temperature of a water and can control the on/off state of a Peltier heat pump \cite{peltier}\cite{pelt} to control the cooling of the substance. 
-    \item Construct several convergence methods which determine the on/off state of the Peltier depending on given inputs and compare their abilities at precisely controlling the temperature of the water.
-    \item Measure the efficiency of the cooling circuit when reducing the temperature of a fixed volume of water by a known amount.
+    \item Build a circuit controlled by python code running on a Raspberry Pi that measures the temperature of a mass of water and can control the on/off state of a Peltier heat pump \cite{peltier}\cite{pelt} to control the cooling of the water. 
+    \item Construct several convergence methods which determine the required on/off state of the Peltier depending on given inputs and compare their abilities at precisely controlling the temperature of the water.
+    \item Measure the efficiency of the cooling circuit when reducing the temperature of a fixed mass of water by a known amount.
 \end{itemize}
 \section*{Method}
-The Peltier heat pump cooling chip was controlled using a breadboard circuit built using a Raspberry Pi \cite{rpi} as a system on a chip microcontroller. The chip was powered using an external power supply, which was connected and disconnected using a transistor. A python script was written to control the state of the transistor depending on temperature readings from a thermometer. 
+The Peltier heat pump cooling chip was controlled using a breadboard circuit built using a Raspberry Pi \cite{rpi} as a system on a chip microcontroller. The chip was powered using an external power supply, which was connected and disconnected using a transistor. A python script was written to control the state of the transistor depending on temperature readings from a thermometer. A link to this code can be found in Appendix \ref{app:code}
 
 \subsection*{Thermometer Calibration}
 The circuit was initially set up with a Programmable Resolution 1-Wire Digital Thermometer (DS18B20) \cite{thermometer}. This thermometer has a programmable precision of 9 to 12 bits and an accuracy of $\pm 0.5^oC$. In 12 bit mode, this gives the thermometer a highest precision where it is able to read at $2^{-4o} C (0.0625^o C)$. This was tested with a short python script which reads the temperature of the thermometer at regular time intervals. A second thermometer was connected in parallel with the first and was tested in the same way. Over a period of 200 seconds with the thermometer probes measuring the temperature of the water. The temperature from both thermometers was recorded.
 
 \subsection*{Peltier Setup}
-The Peltier was connected to a GwInstek GPS-x3303 power supply \cite{powe_sup}. This was in turn connected to a Darlington T0220 Transistor \cite{trans} which acted as a switch and could be controlled by a Raspberry Pi by toggling the state of one of its GPIO (general purpose input output) pins between a high and a low voltage. When the input voltage to the transistor was high the transistor switched on which completed the Peltier circuit activating the cooling chip using the power supply. When the voltage was low the transistor switched off which disconnected the Peltier circuit and stopped the cooling chip from receiving power.\\
+The Peltier was connected to a GwInstek GPS-x3303 power supply \cite{powe_sup}. This was in turn connected to a Darlington T0220 Transistor \cite{trans} which acted as a switch and could be controlled by a Raspberry Pi by toggling the state of one of its GPIO (general purpose input output) pins between a high and a low voltage. When the input voltage to the transistor was high the transistor switched on, which completed the Peltier circuit activating the cooling chip using the power supply. When the voltage was low the transistor switched off which disconnected the Peltier circuit and stopped the cooling chip from receiving power.\\
 
 \begin{figure}[h!]
     \centering
@@ -118,19 +118,19 @@ Once the Peltier and thermometer were working and tested the Peltier chip was pl
  % **** Set up diagram? ****
 
 \subsection*{Controlling the Cooling Chip}
-Several methods were used to determine the state of the cooling chip, which aimed to converge the temperature of the water down to a target temperature. In all methods, a precision range was set which corresponded to the precision with which the thermometer could measure (in some cases this was increased to see different responses). This was done to allow for inaccuracies in the temperature readings, prevent the cooling chip from rapidly switching on and off which could damage it, and provide an acceptable range around the aim temperature which would be counted as the same as the aim temperature (aim temperature $\pm$ precision = aim temperature).\\
+Several methods were used to determine the required state of the cooling chip, which aimed to converge the temperature of the water down to a target temperature. In all methods, a precision range was set which corresponded to the precision with which the thermometer could measure (in some cases this was increased to see different responses). This was done to allow for inaccuracies in the temperature readings, prevent the cooling chip from rapidly switching on and off, which could damage it, and provide an acceptable range, around the aim temperature, which would be counted as the same as the aim temperature (aim temperature $\pm$ precision = aim temperature).\\
 
 These methods worked using the following rules:\\ % converge(), hysteretic_conv(), rate_limit_conv(), pre_empt_conv()
 
 1 Converge (Converge). If the temperature of the water was above the aim temperature plus the precision then the chip was switched on. Alternatively, if the temperature of the water was below the aim temperature minus the precision then the chip was turned off.\\
 
-2 Hysteresis Convergence (Hysteretic$\_$conv). It was observed that the rate of heating from the ambient temperature was greater than the rate of cooling from the chip. This results in the the cooling phase lasting longer than a heating phase as compared to the reverse temperature change. To combat this the cooling chip was activated when the temperature was above the aim temperature plus a proportion of the precision level. This reduces the relative heating phase limiting the temperature overshoot.\\
+2 Hysteresis Convergence (Hysteretic$\_$conv). It was observed that the rate of heating from the ambient temperature was greater than the rate of cooling from the chip. This resulted in the the cooling phase lasting longer than the heating phase. To combat this, the cooling chip was activated when the temperature was above the aim temperature plus a proportion of the precision level. This reduced the relative heating phase limiting the temperature overshoot.\\
 
-3 Rate Limit Convergence (Rate$\_$limit$\_$conv). Given the observation above, that the rate of heating from the ambient temperature was greater than the rate of cooling from the chip, the high-end temperature limit where the chip is turned on is adaptively moved depending on the difference between the ambient temperature and the aim temperature. If the room temperature is much higher than the aim temperature then the assumption is that the rate of heating will be very fast so the chip is turned on at a lower temperature than it would if the temperature difference was less. This should limit the overshoot of the temperature in the heating phase by changing the upper limit depending on the expected rate of temperature increase from the surroundings. \\
+3 Rate Limit Convergence (Rate$\_$limit$\_$conv). Given the observation above, that the rate of heating from the ambient temperature was greater than the rate of cooling from the chip, the high-end temperature limit where the chip is turned on was adaptively moved depending on the difference between the ambient temperature and the aim temperature. If the room temperature is much higher than the aim temperature then the assumption is that the rate of heating will be very fast, so the chip is turned on at a lower temperature than it would if the temperature difference was less. This should limit the overshoot of the temperature in the heating phase by changing the upper limit depending on the expected rate of temperature increase from the surroundings. \\
 
-4 Pre-emptive Convergence (Pre$\_$empt$\_$conv). Here the rate of temperature change is used to try and pre-empt the point at which the temperature will become greater than or less than the aim temperature and toggle the state of the cooling chip accordingly. This is done using the idea that the temperature of the water will continue to change even after the state of the chip has been changed. For example, when the water is heating, if the rate ($^oC/s$) added to the current temperature will be greater than the aim temperature then the cooling chip will be turned on to start the cooling process before the temperature has fully risen to the aim temperature. This rate can be multiplied by an estimated change factor i.e number of seconds for an effect to be realised, to try and work closer to the aim temperature.\\
+4 Pre-emptive Convergence (Pre$\_$empt$\_$conv). Here the rate of temperature change was used to try and pre-empt the point at which the temperature will become greater than, or less than, the aim temperature, and toggle the state of the cooling chip accordingly. This is done using the idea that the temperature of the water will continue to change even after the state of the chip has been changed. For example, when the water is heating, if the rate ($^oC/s$) added to the current temperature will be greater than the aim temperature then the cooling chip will be turned on to start the cooling process before the temperature has fully risen to the aim temperature. This rate can be multiplied by an estimated change factor i.e number of seconds for an effect to be realised, to try and work closer to the aim temperature.\\
 
-To compare the different convergence methods a scoring system was devised which looks at temperature measurements over a test period and finds the fraction of these which were within the precision range of the desired temperature. The test range was chosen to only start when the temperature had first reached the aim temperature so as to only count the region around an aim temperature and not while initially cooling from the original temperature to the aim.   \\
+To compare the different convergence methods a scoring system was devised which looks at temperature measurements over a test period and finds the fraction of these which were within the precision range of the desired temperature. The test range was chosen to only start when the temperature had first reached the aim temperature so as to only count readings in the region around an aim temperature and not while initially cooling from the original temperature to the aim temperature.   \\
 
 In addition to this, the efficiency of the cooling system was measured. This measurement was made during the initial cooling phase before the aim temperature had been reached for the first time. This was done by recording the time ($t$) between when the chip was first turned on and when the aim temperature was reached. This time was multiplied by the power provided from the power source ($P=IV$) to give a total energy used to cool. This was then compared to the energy required to cool the water by the same temperature difference ($\Delta T$) using the known specific heat capacity ($c$) and mass ($m$) of the water. The ratios of these energies were used to find the efficiency of the overall cooling system:
 \begin{equation}
@@ -140,7 +140,7 @@ In addition to this, the efficiency of the cooling system was measured. This mea
 
 % using the heat capacity of water at room temp
 \section*{Results and Discussion}
-An important thing to note throughout this results section is that the precision of the thermometer in its most precise setting is $0.0625^oC$. This precision is the reason behind the step-like nature in the raw data. Attempts were made to smooth the data, which can be seen in Appendix \ref{app:smoothed}, however this was felt to potentially over or under exaggerate changes in aiming to display smoother data. Instead of smoothing data the decision was made to run experiments over long periods of time which will show trends over the step-like nature of the temperature readings. \\
+An important thing to note throughout this results section is that the precision of the thermometer in its most precise setting is $0.0625^oC$. This precision is the reason behind the step-like nature in the raw data. Attempts were made to smooth the data, which can be seen in Appendix \ref{app:smoothed}, however this was felt to potentially distort changes in aiming to display smoother data. Instead of smoothing data the decision was made to run experiments over long periods of time, which will show trends over the step-like nature of the temperature readings. \\
 
 \subsection*{Thermometer Calibration}
 The readings from two thermometers submerged in water close to one another were measured simultaneously. These temperature data were plotted and shown in Figure \ref{fig:therm_calib}.
@@ -337,6 +337,10 @@ Here N-1 represents the number of degrees of freedom and $x_{expected}$ the aim 
     \label{fig:comparison}
 \end{figure}
 
+\section{Python 3.6 Control Script}
+All scripts for the running of the system used along with some scripts used for plotting and data analysis can be found at:
+
+\centering https://github.com/Darthmazgar/Precision-Refrigerator-
 
 % \newpage
 % \section{Python Data Analysis Code}\label{ap:code}
